@@ -1,0 +1,18 @@
+.message {
+  margin-bottom: 10px;
+  &__text {
+    margin-right: 30px;
+    @include rem(18);
+    color: $gray-darker;
+  }
+  &__button {
+    color: $color-brand;
+    transition: 1s;
+    @include rem(14);
+    cursor: pointer;
+    &:hover {
+      color: darken($color-brand, 15%);
+      text-decoration: underline;
+    }
+  }
+}

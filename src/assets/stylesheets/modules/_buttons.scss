@@ -1,0 +1,11 @@
+.button--primary {
+  color: $white;
+  background-color: $color-brand;
+  @include rem(18);
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($color-brand, 15%);
+    outline: none;
+  }
+}

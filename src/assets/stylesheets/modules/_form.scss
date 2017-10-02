@@ -1,0 +1,28 @@
+.form {
+  margin-bottom: 60px;
+  &__button {
+    padding: 8px 20px;
+    font-weight: 400;
+    float: right;
+    @include rem(14);
+    @media screen and (max-width: 740px) {
+      margin: auto;
+      display: block;
+      float: inherit;
+    }
+  }
+  &__input {
+    width: 78%;
+    @include rem(14);
+    padding: 5px 15px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: $gray-lighter;
+    border: 1px solid $gray-lighter;
+    outline: none;
+    @media screen and (max-width: 740px) {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}
