@@ -35,6 +35,7 @@ function configureStoreDev(initialState) {
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
     thunk,
     reactRouterMiddleware,
+    require('redux-logger').createLogger({ duration: true }), // eslint-disable-line global-require
   ];
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
