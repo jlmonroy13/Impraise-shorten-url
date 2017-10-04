@@ -1,13 +1,11 @@
-const defaultState = {
-	showMenu: false,
-};
+import { ADD_LINK } from '../utils/constants';
 
-export default function linksReducer(state = defaultState, action) {
+export default function linksReducer(state = {}, action) {
 	switch (action.type) {
-		case 'SET_SHOW_MENU':
+		case ADD_LINK:
 			return {
 				...state,
-				showMenu: action.payload,
+        ...action.payload,
 			};
 		default:
 			return state;

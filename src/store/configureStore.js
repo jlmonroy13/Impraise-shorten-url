@@ -2,6 +2,7 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
+import { loadState } from '../utils/localStorage';
 // 'routerMiddleware': the new way of storing route changes with redux middleware since rrV4.
 import { routerMiddleware } from 'react-router-redux';
 import rootReducer from '../reducers';
@@ -39,7 +40,9 @@ function configureStoreDev(initialState) {
   ];
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
-  const store = createStore(rootReducer, initialState, composeEnhancers(
+  const persistedState = loadState();
+  const initState = { ...initialState, ...persistedState };
+  const store = createStore(rootReducer, initState, composeEnhancers(
     applyMiddleware(...middlewares)
     )
   );

@@ -1,3 +1,3 @@
-import LinksList from './LinksList';
+import LinksList from './LinksListContainer';
 
 export default LinksList;
