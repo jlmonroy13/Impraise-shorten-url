@@ -25,7 +25,8 @@ class Form extends Component {
       url,
       shortcode: randamId(6, 'a0'),
     };
-		this.props.onGetShortenUrl(urlData);
+    this.props.onGetShortenUrl(urlData);
+    this.setState({ url: '' });
 	}
 
   render() {

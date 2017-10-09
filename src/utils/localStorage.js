@@ -18,3 +18,11 @@ export const saveState = (state) => {
     Alert.error(err);
   }
 };
+
+export const removeStorageState = (item) => {
+  try {
+    localStorage.removeItem(item);
+  } catch (err) {
+    Alert.error(err);
+  }
+};
