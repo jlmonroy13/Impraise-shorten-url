@@ -9,7 +9,7 @@ class LinksList extends Component {
     this.renderLinks = this.renderLinks.bind(this);
   }
   renderLinks(link) {
-    return <LinksListItem link={link} />;
+    return <LinksListItem link={link} key={link.shortcode}/>;
   }
   render() {
     return (

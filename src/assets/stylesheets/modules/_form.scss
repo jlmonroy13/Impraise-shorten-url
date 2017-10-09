@@ -10,6 +10,10 @@
       display: block;
       float: inherit;
     }
+    &.disable {
+      background-color: $gray-lighter2;
+      color: $gray-light;
+    }
   }
   &__input {
     width: 78%;

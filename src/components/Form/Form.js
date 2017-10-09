@@ -30,7 +30,7 @@ class Form extends Component {
 
   render() {
     const { url } = this.state;
-    const buttonClass = url ? '' : 'inactive';
+    const buttonClass = url ? '' : 'disable';
     return (
       <form className="form" onSubmit={this.onSubmitForm}>
         <input
@@ -41,7 +41,11 @@ class Form extends Component {
           onChange={this.onChangeUrl}
           name="url"
         />
-        <button className={`button button--primary form__button ${buttonClass}`} type="submit">
+        <button
+          className={`button button--primary form__button ${buttonClass}`}
+          type="submit"
+          disabled={!url}
+        >
           Shorten this link
         </button>
       </form>
