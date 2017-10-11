@@ -17,12 +17,15 @@ The front-end is built with [React](https://github.com/facebook/react). I use
 
 This project was generated with [React Slingshot] (https://github.com/coryhouse/react-slingshot).
 
+## Dependencies 
+- [Watchman](https://facebook.github.io/watchman/)
+
 ## Installation
 
 First you have to clone the next proxy-server project:
 
 ```bash
-$ git clone git@github.com:jlmonroy13/Impraise-shorten-url.git
+$ git clone git@github.com:jlmonroy13/proxy-server.git
 $ cd proxy-server
 $ npm install
 $ node server.js
@@ -31,7 +34,7 @@ $ node server.js
 and then clone the next project and running it in a different terminal window:
 
 ```bash
-$ git clone git@github.com:jlmonroy13/proxy-server.git
+$ git clone git@github.com:jlmonroy13/Impraise-shorten-url.git
 $ cd Impraise-shorten-url
 $ npm install
 ```
