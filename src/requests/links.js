@@ -1,22 +1,14 @@
 import { shorten } from '../utils/requests';
-import Alert from 'react-s-alert';
 
 const requestGetShortenLink = (urlData) => {
   return shorten
-    .post('/shorten', urlData)
-    .catch(catchRequestError);
+    .post('/shorten', urlData);
 };
 
 const requestGetShortenStatus = (shortenUrl) => {
   return shorten
-    .get(`/${shortenUrl}/stats`)
-    .catch(catchRequestError);
+    .get(`/${shortenUrl}/stats`);
 };
-
-function catchRequestError({ response }) {
-  const errorMsg = response.data.error && response.data.error.user_authentication[0];
-  Alert.error(errorMsg);
-}
 
 export {
   requestGetShortenLink,

@@ -30,7 +30,8 @@ const getShortenUrlReq = (urlData) => {
     dispatch(setStatusRequestTrue());
     const { links } = getState();
 		requestGetShortenLink(urlData)
-			.then(successGetShortenUrlReq);
+      .then(successGetShortenUrlReq)
+      .catch(catchRequestError);
 
 		function successGetShortenUrlReq({ data: { shortcode } }) {
       const linksArr = ObjectUtils.toArray(links);
@@ -43,19 +44,31 @@ const getShortenUrlReq = (urlData) => {
           redirectCount: 0,
         }
       };
-      axios.all(linksArrPromises).then((response) => {
-        linksArr.forEach((link, index) => {
-          const updatedUrlObj = { ...link, ...response[index].data };
-          const obj = {
-            [updatedUrlObj.shortcode]: { ...updatedUrlObj },
-          };
-          dispatch(addLink(obj));
-        });
-      });
+      axios.all(linksArrPromises)
+        .then((response) => {
+          linksArr.forEach((link, index) => {
+            const updatedUrlObj = { ...link, ...response[index].data };
+            const obj = {
+              [updatedUrlObj.shortcode]: { ...updatedUrlObj },
+            };
+            dispatch(addLink(obj));
+          });
+        })
+        .catch(catchRequestError);
       dispatch(addLink(urlObj));
       Alert.success(`Your shorten for "${urlData.url}" was successfully created`);
       dispatch(setStatusRequestFalse());
-		}
+    }
+
+    function catchRequestError({ response }) {
+      dispatch(setStatusRequestFalse());
+      if (response === undefined) {
+        Alert.error('Please ensure that the server has not been disconnected');
+      } else {
+        const errorMsg = response.data.error && response.data.error.user_authentication[0];
+        Alert.error(errorMsg);
+      }
+    }
 	};
 };
 
